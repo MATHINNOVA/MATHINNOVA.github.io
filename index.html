@@ -25,6 +25,203 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== AGENDA 2026 — SESIONES CARDS ===== */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .agenda-card {
+      position: relative;
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid var(--gray-200);
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+
+    .agenda-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+      border-color: var(--gold);
+    }
+
+    /* Franja de color superior por sesión */
+    .agenda-card-accent {
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold), var(--teal));
+    }
+
+    .agenda-card-body {
+      padding: 1.75rem 2rem 2rem;
+    }
+
+    /* Número de sesión + fecha en la misma línea */
+    .agenda-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .agenda-session-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .agenda-date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.75rem;
+      background: rgba(232,168,56,0.1);
+      border: 1px solid rgba(232,168,56,0.25);
+      border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #b07d10;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .agenda-card-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Divisor sutil */
+    .agenda-divider {
+      height: 1px;
+      background: var(--gray-200);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Speaker block */
+    .agenda-speaker {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .agenda-speaker-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+    }
+
+    /* Fallback avatar si no hay foto */
+    .agenda-speaker-initial {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .agenda-speaker-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .agenda-speaker-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+
+    .agenda-speaker-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    /* Hora badge en la parte inferior de la card */
+    .agenda-time-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .agenda-time-icon {
+      font-size: 0.85rem;
+    }
+
+    .agenda-time-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+
+    /* ===== HEADER DE AGENDA 2026 CON CONTADOR ===== */
+    .agenda-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 0;
+    }
+
+    .agenda-count-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      border-radius: 100px;
+      color: var(--gold-light);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      border: 1px solid rgba(232,168,56,0.2);
+      white-space: nowrap;
+    }
+
+    .agenda-count-dot {
+      width: 7px; height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      .agenda-grid { grid-template-columns: 1fr; }
+      .agenda-header-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
@@ -130,19 +327,185 @@
 <section class="section agenda2026-section" id="agenda2026">
   <div class="container">
     <div class="section-label">Agenda 2026</div>
-    <h2 class="section-title reveal">Próximas sesiones</h2>
-    <div class="coming-soon-box reveal">
-      <div class="coming-soon-icon">🗓️</div>
-      <h3>Agenda 2026 en construcción</h3>
-      <p>
-        Estamos preparando un nuevo ciclo de sesiones formativas, talleres y eventos
-        para este año. La agenda completa se compartirá próximamente.
-      </p>
-      <div class="coming-soon-badge">
-        <span class="badge-dot"></span>
-        Próximamente
+    <div class="agenda-header-row">
+      <h2 class="section-title reveal" style="margin-bottom:0;">Próximas sesiones</h2>
+      <div class="agenda-count-badge reveal">
+        <span class="agenda-count-dot"></span>
+        6 sesiones · Abr–May 2026 · 10:00 AM
       </div>
     </div>
+
+    <div class="agenda-grid">
+
+      <!-- Sesión 1 -->
+      <div class="agenda-card reveal">
+        <div class="agenda-card-accent"></div>
+        <div class="agenda-card-body">
+          <div class="agenda-card-meta">
+            <span class="agenda-session-num">Sesión 01</span>
+            <span class="agenda-date-pill">📅 Mar 7 de abril</span>
+          </div>
+          <h3 class="agenda-card-title">Introducción a las redes científicas</h3>
+          <div class="agenda-divider"></div>
+          <div class="agenda-speaker">
+            <img src="Foto%20Daniel%20Steven%20Moran%20Pizarro.jpg"
+                 alt="Daniel Steven Moran Pizarro"
+                 class="agenda-speaker-avatar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="agenda-speaker-initial" style="display:none;">DM</div>
+            <div class="agenda-speaker-info">
+              <span class="agenda-speaker-label">Conferencista</span>
+              <span class="agenda-speaker-name">Daniel Steven Moran Pizarro</span>
+            </div>
+          </div>
+          <div class="agenda-time-row">
+            <span class="agenda-time-icon">🕙</span>
+            <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sesión 2 -->
+      <div class="agenda-card reveal">
+        <div class="agenda-card-accent"></div>
+        <div class="agenda-card-body">
+          <div class="agenda-card-meta">
+            <span class="agenda-session-num">Sesión 02</span>
+            <span class="agenda-date-pill">📅 Mar 21 de abril</span>
+          </div>
+          <h3 class="agenda-card-title">Gestores de referencia y bases de datos bibliográficas</h3>
+          <div class="agenda-divider"></div>
+          <div class="agenda-speaker">
+            <img src="Foto%20Daniel%20Steven%20Moran%20Pizarro.jpg"
+                 alt="Daniel Steven Moran Pizarro"
+                 class="agenda-speaker-avatar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="agenda-speaker-initial" style="display:none;">DM</div>
+            <div class="agenda-speaker-info">
+              <span class="agenda-speaker-label">Conferencista</span>
+              <span class="agenda-speaker-name">Daniel Steven Moran Pizarro</span>
+            </div>
+          </div>
+          <div class="agenda-time-row">
+            <span class="agenda-time-icon">🕙</span>
+            <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sesión 3 -->
+      <div class="agenda-card reveal">
+        <div class="agenda-card-accent"></div>
+        <div class="agenda-card-body">
+          <div class="agenda-card-meta">
+            <span class="agenda-session-num">Sesión 03</span>
+            <span class="agenda-date-pill">📅 Mar 5 de mayo</span>
+          </div>
+          <h3 class="agenda-card-title">Normas APA</h3>
+          <div class="agenda-divider"></div>
+          <div class="agenda-speaker">
+            <img src="Foto%20Alexis%20Trujillo%20Garc%C3%ADa.png"
+                 alt="Alexis Trujillo García"
+                 class="agenda-speaker-avatar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="agenda-speaker-initial" style="display:none;">AT</div>
+            <div class="agenda-speaker-info">
+              <span class="agenda-speaker-label">Conferencista</span>
+              <span class="agenda-speaker-name">Alexis Trujillo García</span>
+            </div>
+          </div>
+          <div class="agenda-time-row">
+            <span class="agenda-time-icon">🕙</span>
+            <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sesión 4 -->
+      <div class="agenda-card reveal">
+        <div class="agenda-card-accent"></div>
+        <div class="agenda-card-body">
+          <div class="agenda-card-meta">
+            <span class="agenda-session-num">Sesión 04</span>
+            <span class="agenda-date-pill">📅 Mar 12 de mayo</span>
+          </div>
+          <h3 class="agenda-card-title">Análisis bibliométrico</h3>
+          <div class="agenda-divider"></div>
+          <div class="agenda-speaker">
+            <img src="Foto%20Andr%C3%A9s%20Felipe%20Sol%C3%ADs%20Pino.jpeg"
+                 alt="Andrés Felipe Solis Pino"
+                 class="agenda-speaker-avatar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="agenda-speaker-initial" style="display:none;">AS</div>
+            <div class="agenda-speaker-info">
+              <span class="agenda-speaker-label">Conferencista</span>
+              <span class="agenda-speaker-name">Andrés Felipe Solis Pino</span>
+            </div>
+          </div>
+          <div class="agenda-time-row">
+            <span class="agenda-time-icon">🕙</span>
+            <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sesión 5 -->
+      <div class="agenda-card reveal">
+        <div class="agenda-card-accent"></div>
+        <div class="agenda-card-body">
+          <div class="agenda-card-meta">
+            <span class="agenda-session-num">Sesión 05</span>
+            <span class="agenda-date-pill">📅 Mar 19 de mayo</span>
+          </div>
+          <h3 class="agenda-card-title">Escritura de literatura científica</h3>
+          <div class="agenda-divider"></div>
+          <div class="agenda-speaker">
+            <img src="Foto%20Claudia%20Patricia%20Hernandez%20Arbelaez.jpeg"
+                 alt="Claudia Patricia Hernández Arbelaez"
+                 class="agenda-speaker-avatar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="agenda-speaker-initial" style="display:none;">CH</div>
+            <div class="agenda-speaker-info">
+              <span class="agenda-speaker-label">Conferencista</span>
+              <span class="agenda-speaker-name">Claudia Patricia Hernández A.</span>
+            </div>
+          </div>
+          <div class="agenda-time-row">
+            <span class="agenda-time-icon">🕙</span>
+            <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sesión 6 -->
+      <div class="agenda-card reveal">
+        <div class="agenda-card-accent"></div>
+        <div class="agenda-card-body">
+          <div class="agenda-card-meta">
+            <span class="agenda-session-num">Sesión 06</span>
+            <span class="agenda-date-pill">📅 Mar 26 de mayo</span>
+          </div>
+          <h3 class="agenda-card-title">Análisis de datos cuantitativo orientado a la investigación</h3>
+          <div class="agenda-divider"></div>
+          <div class="agenda-speaker">
+            <img src="Foto%20Lizley%20Reyes.jpg"
+                 alt="Lizley Reyes Álvarez"
+                 class="agenda-speaker-avatar"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="agenda-speaker-initial" style="display:none;">LR</div>
+            <div class="agenda-speaker-info">
+              <span class="agenda-speaker-label">Conferencista</span>
+              <span class="agenda-speaker-name">Lizley Reyes Álvarez</span>
+            </div>
+          </div>
+          <div class="agenda-time-row">
+            <span class="agenda-time-icon">🕙</span>
+            <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /agenda-grid -->
   </div>
 </section>
 
