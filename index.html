@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* ===== AGENDA 2026 — SESIONES CARDS ===== */
     .agenda-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -30,12 +31,9 @@
       margin-top: 3rem;
     }
     .agenda-card {
-      position: relative;
-      background: var(--white);
-      border-radius: 20px;
-      border: 1px solid var(--gray-200);
-      padding: 0;
-      overflow: hidden;
+      position: relative; background: var(--white);
+      border-radius: 20px; border: 1px solid var(--gray-200);
+      padding: 0; overflow: hidden;
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 16px rgba(0,0,0,0.04);
     }
@@ -44,170 +42,179 @@
       box-shadow: 0 20px 50px rgba(0,0,0,0.10);
       border-color: var(--gold);
     }
-    .agenda-card-accent {
-      height: 5px;
-      background: linear-gradient(90deg, var(--gold), var(--teal));
-    }
-    .agenda-card-body {
-      padding: 1.75rem 2rem 2rem;
-    }
-    .agenda-card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-    }
+    .agenda-card-accent { height: 5px; background: linear-gradient(90deg, var(--gold), var(--teal)); }
+    .agenda-card-body { padding: 1.75rem 2rem 2rem; }
+    .agenda-card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
     .agenda-session-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--teal);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      font-weight: 500; color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase;
     }
     .agenda-date-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+      display: inline-flex; align-items: center; gap: 0.35rem;
       padding: 0.28rem 0.75rem;
-      background: rgba(232,168,56,0.1);
-      border: 1px solid rgba(232,168,56,0.25);
-      border-radius: 100px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: #b07d10;
-      font-weight: 500;
-      white-space: nowrap;
+      background: rgba(232,168,56,0.1); border: 1px solid rgba(232,168,56,0.25);
+      border-radius: 100px; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: #b07d10; font-weight: 500; white-space: nowrap;
     }
     .agenda-card-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--navy);
-      line-height: 1.3;
-      margin-bottom: 1.25rem;
+      font-family: 'DM Serif Display', serif; font-size: 1.2rem;
+      color: var(--navy); line-height: 1.3; margin-bottom: 1.25rem;
     }
-    .agenda-divider {
-      height: 1px;
-      background: var(--gray-200);
-      margin-bottom: 1.25rem;
-    }
-    .agenda-speaker {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
+    .agenda-divider { height: 1px; background: var(--gray-200); margin-bottom: 1.25rem; }
+    .agenda-speaker { display: flex; align-items: center; gap: 0.85rem; }
     .agenda-speaker-avatar {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--gold);
-      flex-shrink: 0;
+      width: 46px; height: 46px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--gold); flex-shrink: 0;
       background: linear-gradient(135deg, var(--navy), var(--teal));
     }
     .agenda-speaker-initial {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      flex-shrink: 0;
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 2px solid var(--gold); flex-shrink: 0;
       background: linear-gradient(135deg, var(--navy), var(--teal));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      color: var(--white);
-      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; font-size: 1.1rem;
+      color: var(--white); font-weight: 700;
     }
-    .agenda-speaker-info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
+    .agenda-speaker-info { display: flex; flex-direction: column; gap: 0.15rem; }
     .agenda-speaker-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-400);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gray-400);
     }
-    .agenda-speaker-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.3;
-    }
+    .agenda-speaker-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
     .agenda-time-row {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1rem;
-      padding-top: 0.85rem;
-      border-top: 1px solid var(--gray-200);
+      display: flex; align-items: center; gap: 0.4rem;
+      margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid var(--gray-200);
     }
     .agenda-time-icon { font-size: 0.85rem; }
-    .agenda-time-text {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--gray-600);
-      font-weight: 500;
-    }
-    /* ── BOTÓN UNIRSE ── */
+    .agenda-time-text { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--gray-600); font-weight: 500; }
     .agenda-join-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.75rem;
-      padding: 0.45rem 1rem;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      margin-top: 0.75rem; padding: 0.45rem 1rem;
       background: linear-gradient(135deg, var(--navy-deep, #0a1628), var(--navy, #0d2045));
       color: var(--gold, #e8a838) !important;
-      border: 1px solid rgba(232,168,56,0.35);
-      border-radius: 100px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      width: fit-content;
+      border: 1px solid rgba(232,168,56,0.35); border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.05em;
+      text-decoration: none; transition: all 0.25s ease; width: fit-content;
     }
     .agenda-join-btn:hover {
       background: linear-gradient(135deg, var(--teal, #0d7a7a), var(--navy, #0d2045));
-      border-color: var(--gold, #e8a838);
-      transform: translateY(-1px);
+      border-color: var(--gold, #e8a838); transform: translateY(-1px);
       box-shadow: 0 4px 14px rgba(232,168,56,0.2);
     }
-    /* ===== HEADER DE AGENDA 2026 CON CONTADOR ===== */
     .agenda-header-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 0;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 0;
     }
     .agenda-count-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.5rem 1.25rem;
       background: linear-gradient(135deg, var(--navy-deep), var(--navy));
-      border-radius: 100px;
-      color: var(--gold-light);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 500;
-      border: 1px solid rgba(232,168,56,0.2);
-      white-space: nowrap;
+      border-radius: 100px; color: var(--gold-light);
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 500;
+      border: 1px solid rgba(232,168,56,0.2); white-space: nowrap;
     }
     .agenda-count-dot {
-      width: 7px; height: 7px;
-      background: var(--gold);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+      width: 7px; height: 7px; background: var(--gold);
+      border-radius: 50%; animation: pulse 2s ease-in-out infinite;
     }
-    @media (max-width: 768px) {
+
+    /* ===== EVENTOS 2026 ===== */
+    .eventos-section { background: var(--gray-100); }
+
+    .eventos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .evento-card {
+      background: var(--white); border-radius: 24px;
+      overflow: hidden; border: 1px solid var(--gray-200);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+      display: flex; flex-direction: column;
+    }
+    .evento-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    }
+    .evento-banner { width: 100%; aspect-ratio: 16/7; object-fit: cover; display: block; }
+    .evento-accent-congreso { height: 5px; background: linear-gradient(90deg, #6A3DAA, #D4920A); }
+    .evento-accent-workshop  { height: 5px; background: linear-gradient(90deg, var(--teal), var(--gold)); }
+
+    .evento-header { padding: 1.5rem 1.75rem 1rem; border-bottom: 1px solid var(--gray-200); }
+    .evento-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.25rem 0.8rem; border-radius: 100px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .evento-tag.tag-congreso { background: rgba(106,61,170,0.1); color: #6A3DAA; border: 1px solid rgba(106,61,170,0.25); }
+    .evento-tag.tag-workshop { background: rgba(46,107,127,0.1); color: var(--teal); border: 1px solid rgba(46,107,127,0.25); }
+
+    .evento-title {
+      font-family: 'DM Serif Display', serif; font-size: 1.25rem;
+      color: var(--navy); line-height: 1.25; margin-bottom: 0.6rem;
+    }
+    .evento-meta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .evento-meta-pill {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      font-weight: 600; color: var(--gray-600);
+    }
+
+    .evento-body { padding: 1.25rem 1.75rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+    .evento-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.75; }
+
+    .evento-program { background: var(--gray-100); border-radius: 14px; overflow: hidden; }
+    .evento-program-day { border-bottom: 1px solid var(--gray-200); }
+    .evento-program-day:last-child { border-bottom: none; }
+    .evento-day-header { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1rem; }
+    .evento-day-label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; }
+    .evento-day-link {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700;
+      color: #DC2626; background: #FEE2E2; padding: 0.2rem 0.6rem;
+      border-radius: 6px; text-decoration: none; transition: background 0.2s;
+    }
+    .evento-day-link:hover { background: #FECACA; }
+    .evento-day-sessions { padding: 0 1rem 0.75rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .evento-session-row { font-size: 0.8rem; color: var(--gray-800); line-height: 1.5; padding: 0.2rem 0; }
+    .evento-session-area { font-weight: 700; color: var(--navy); font-size: 0.75rem; }
+    .evento-session-speaker { color: var(--gray-600); font-size: 0.75rem; }
+
+    .evento-footer {
+      padding: 1rem 1.75rem 1.5rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      border-top: 1px solid var(--gray-200);
+    }
+    .evento-btn-primary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.25rem;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      color: var(--gold) !important;
+      border: 1px solid rgba(232,168,56,0.3); border-radius: 10px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.05em;
+      text-decoration: none; transition: all 0.25s ease;
+    }
+    .evento-btn-primary:hover {
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      box-shadow: 0 4px 16px rgba(232,168,56,0.2); transform: translateY(-1px);
+    }
+    .evento-btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.25rem; background: #FEE2E2; color: #DC2626 !important;
+      border-radius: 10px; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+      text-decoration: none; transition: all 0.2s ease;
+    }
+    .evento-btn-secondary:hover { background: #FECACA; }
+
+    @media (max-width: 900px) {
+      .eventos-grid { grid-template-columns: 1fr; }
       .agenda-grid { grid-template-columns: 1fr; }
       .agenda-header-row { flex-direction: column; align-items: flex-start; }
     }
@@ -215,6 +222,7 @@
 </head>
 <body>
 
+<!-- ===== NAVIGATION ===== -->
 <nav class="navbar">
   <a href="#" class="nav-brand">
     <img src="LOGO%20Mathinnova%20Semillero%20de%20Investigaci%C3%B3n.png" alt="MATHINNOVA">
@@ -223,6 +231,7 @@
   <ul class="nav-links">
     <li><a href="#about">Quiénes somos</a></li>
     <li><a href="#objectives">Objetivos</a></li>
+    <li><a href="#eventos2026">Eventos</a></li>
     <li><a href="#agenda2026">Agenda 2026</a></li>
     <li><a href="#sessions2025">Sesiones 2025</a></li>
     <li><a href="#achievements">Impacto</a></li>
@@ -234,6 +243,7 @@
   </button>
 </nav>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="grid-bg"></div>
   <div class="orb orb-1"></div>
@@ -257,6 +267,7 @@
   <div class="scroll-hint">↓ Descubre más</div>
 </section>
 
+<!-- ===== ABOUT ===== -->
 <section class="section about-section" id="about">
   <div class="container">
     <div class="section-label">Quiénes somos</div>
@@ -276,6 +287,7 @@
   </div>
 </section>
 
+<!-- ===== OBJECTIVES ===== -->
 <section class="section objectives-section" id="objectives">
   <div class="container">
     <div class="section-label" style="color: var(--gold-light);">Objetivos</div>
@@ -309,12 +321,176 @@
   </div>
 </section>
 
+<!-- ===== EVENTOS 2026 ===== -->
+<section class="section eventos-section" id="eventos2026">
+  <div class="container">
+    <div class="section-label">Eventos 2026</div>
+    <h2 class="section-title reveal">Próximos eventos académicos</h2>
+    <p class="reveal" style="color: var(--gray-600); max-width: 640px; line-height: 1.7; margin-bottom: 0;">
+      MATHINNOVA participa activamente en estos dos espacios académicos de la UNAD durante la segunda quincena de abril. ¡Entrada completamente gratuita en ambos!
+    </p>
+
+    <div class="eventos-grid">
+
+      <!-- ── WORKSHOP ── -->
+      <div class="evento-card reveal">
+        <div class="evento-accent-workshop"></div>
+        <img src="https://i.imgur.com/jhdAvlm.jpeg"
+             alt="6to Workshop de Ciencias Básicas 2026"
+             class="evento-banner" loading="lazy">
+        <div class="evento-header">
+          <div class="evento-tag tag-workshop">🔬 Workshop · ECBTI</div>
+          <h3 class="evento-title">6to Workshop de Ciencias Básicas</h3>
+          <div class="evento-meta-row">
+            <span class="evento-meta-pill">📅 14, 15 y 16 de abril · 2026</span>
+            <span class="evento-meta-pill">🕗 8:00 AM – 5:00 PM</span>
+          </div>
+          <div class="evento-meta-row" style="margin-top:0.4rem;">
+            <span class="evento-meta-pill">💻 TV UNAD Virtual</span>
+            <span class="evento-meta-pill" style="color: var(--success);">🎉 Gratuito · Certificado</span>
+          </div>
+        </div>
+        <div class="evento-body">
+          <p class="evento-desc">
+            Fortalece tus competencias en <strong>Biología, Química, Matemáticas, Física, Estadística y Ciencia de Datos</strong> a través de conferencias y talleres con invitados nacionales e internacionales, conectando las ciencias básicas con la inteligencia artificial y las innovaciones del siglo XXI.
+          </p>
+
+          <div class="evento-program">
+            <div class="evento-program-day">
+              <div class="evento-day-header" style="background: rgba(46,139,87,0.07);">
+                <span class="evento-day-label">📅 Mar 14 · Biología &amp; Química</span>
+                <a href="https://youtube.com/live/gBLX7pt-tSg?feature=share" target="_blank" rel="noopener" class="evento-day-link">▶ YouTube</a>
+              </div>
+              <div class="evento-day-sessions">
+                <div class="evento-session-row">
+                  <span class="evento-session-area">🧬 Biología (mañana): </span>
+                  <span class="evento-session-speaker">Cotorra endémica del Caribe · Bioingeniería de arañas · Semilleros ASBI, PITANZA</span>
+                </div>
+                <div class="evento-session-row">
+                  <span class="evento-session-area">⚗️ Química (tarde): </span>
+                  <span class="evento-session-speaker">Residuos a compuestos valiosos · Análisis químico · Semilleros SIQAP, SIA, SINBA</span>
+                </div>
+              </div>
+            </div>
+            <div class="evento-program-day">
+              <div class="evento-day-header" style="background: rgba(212,146,10,0.07);">
+                <span class="evento-day-label">📅 Mié 15 · Matemáticas &amp; Física</span>
+                <a href="https://youtube.com/live/z-F0KwcI9tQ?feature=share" target="_blank" rel="noopener" class="evento-day-link">▶ YouTube</a>
+              </div>
+              <div class="evento-day-sessions">
+                <div class="evento-session-row">
+                  <span class="evento-session-area">📐 Matemáticas (mañana): </span>
+                  <span class="evento-session-speaker">Matemáticas e IA · Robótica · Semillero MATHINNOVA</span>
+                </div>
+                <div class="evento-session-row">
+                  <span class="evento-session-area">⚛️ Física (tarde): </span>
+                  <span class="evento-session-speaker">Modelo Estándar &amp; LHC · IA en ciencias básicas · Semillero Mathphysics</span>
+                </div>
+              </div>
+            </div>
+            <div class="evento-program-day">
+              <div class="evento-day-header" style="background: rgba(139,92,246,0.07);">
+                <span class="evento-day-label">📅 Jue 16 · Estadística &amp; Ciencia de Datos</span>
+                <a href="https://youtube.com/live/oHjIlIPOY_Q?feature=share" target="_blank" rel="noopener" class="evento-day-link">▶ YouTube</a>
+              </div>
+              <div class="evento-day-sessions">
+                <div class="evento-session-row">
+                  <span class="evento-session-area">📊 Estadística (mañana): </span>
+                  <span class="evento-session-speaker">Modelado estadístico · Violencia intrafamiliar y datos · Semillero SEINS</span>
+                </div>
+                <div class="evento-session-row">
+                  <span class="evento-session-area">💻 Ciencia de Datos (tarde): </span>
+                  <span class="evento-session-speaker">IA en ciencia de datos · Sector productivo · Semillero MATHINNOVA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="evento-footer">
+          <a href="https://url.unad.edu.co/WorkshopCB" target="_blank" rel="noopener" class="evento-btn-primary">📝 Inscribirme</a>
+          <a href="https://youtube.com/live/gBLX7pt-tSg?feature=share" target="_blank" rel="noopener" class="evento-btn-secondary">▶ Día 1</a>
+          <a href="https://youtube.com/live/z-F0KwcI9tQ?feature=share" target="_blank" rel="noopener" class="evento-btn-secondary">▶ Día 2</a>
+          <a href="https://youtube.com/live/oHjIlIPOY_Q?feature=share" target="_blank" rel="noopener" class="evento-btn-secondary">▶ Día 3</a>
+        </div>
+      </div>
+
+      <!-- ── CONGRESO ── -->
+      <div class="evento-card reveal">
+        <div class="evento-accent-congreso"></div>
+        <img src="https://i.imgur.com/PTZ8Nou.jpeg"
+             alt="I Congreso Internacional de Conferencias Matemáticas Interactivas"
+             class="evento-banner" loading="lazy">
+        <div class="evento-header">
+          <div class="evento-tag tag-congreso">🎓 Congreso Internacional · Red Curricular</div>
+          <h3 class="evento-title">I Congreso Internacional de Conferencias Matemáticas Interactivas</h3>
+          <div class="evento-meta-row">
+            <span class="evento-meta-pill">📅 20 y 21 de abril · 2026</span>
+            <span class="evento-meta-pill">🕗 8:00 AM – 4:00 PM</span>
+          </div>
+          <div class="evento-meta-row" style="margin-top:0.4rem;">
+            <span class="evento-meta-pill">📺 YouTube UNAD</span>
+            <span class="evento-meta-pill" style="color: var(--success);">🎉 Gratuito · Certificado</span>
+          </div>
+        </div>
+        <div class="evento-body">
+          <p class="evento-desc">
+            Explora de forma <strong>interactiva y gamificada</strong> conceptos de lógica, álgebra, cálculo e IA aplicada. Con herramientas como <strong>GeoGebra, Kahoot, Genially, Scratch y Python</strong>, vivirás las matemáticas desde una perspectiva práctica e innovadora.
+          </p>
+
+          <div class="evento-program">
+            <div class="evento-program-day">
+              <div class="evento-day-header" style="background: rgba(212,146,10,0.07);">
+                <span class="evento-day-label">📅 Lun 20 · Conferencias magistrales</span>
+                <a href="https://youtube.com/live/AnkYqxmsRi4?feature=share" target="_blank" rel="noopener" class="evento-day-link">▶ YouTube</a>
+              </div>
+              <div class="evento-day-sessions">
+                <div class="evento-session-row"><span class="evento-session-area">8:00–8:20 </span>Apertura institucional</div>
+                <div class="evento-session-row"><span class="evento-session-area">8:30–9:30 </span>Conferencia inaugural — IA aplicada a las Matemáticas</div>
+                <div class="evento-session-row"><span class="evento-session-area">9:40–10:40 </span>Conferencia temática — Lógica</div>
+                <div class="evento-session-row"><span class="evento-session-area">10:50–11:45 </span>Panel de expertos: Aplicaciones STEM</div>
+                <div class="evento-session-row"><span class="evento-session-area">2:00–3:00 </span>Conferencia temática — Álgebra</div>
+                <div class="evento-session-row"><span class="evento-session-area">3:10–4:10 </span>Conferencia temática — Cálculo</div>
+              </div>
+            </div>
+            <div class="evento-program-day">
+              <div class="evento-day-header" style="background: rgba(106,61,170,0.07);">
+                <span class="evento-day-label">📅 Mar 21 · Ponencias estudiantiles</span>
+                <a href="https://youtube.com/live/KBMIN0n04Ug?feature=share" target="_blank" rel="noopener" class="evento-day-link">▶ YouTube</a>
+              </div>
+              <div class="evento-day-sessions">
+                <div class="evento-session-row"><span class="evento-session-area">9:00–12:00 </span>🎤 Ponencias estudiantiles — Sesión mañana</div>
+                <div class="evento-session-row"><span class="evento-session-area">1:00–4:00 </span>🎤 Ponencias estudiantiles — Sesión tarde</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(106,61,170,0.07); border-left: 3px solid #6A3DAA;
+                      border-radius: 0 8px 8px 0; padding: 0.75rem 1rem;">
+            <p style="font-size: 0.8rem; color: var(--navy); margin: 0; line-height: 1.6;">
+              🎤 <strong>¿Quieres presentar?</strong> Descarga la plantilla en
+              <a href="https://url.unad.edu.co/h6FgO" target="_blank" rel="noopener"
+                 style="color: #6A3DAA; font-weight: 700;">url.unad.edu.co/h6FgO</a>
+              e inscríbete antes del <strong>5 de abril de 2026</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="evento-footer">
+          <a href="https://forms.office.com/r/ZXY0sS5t9T" target="_blank" rel="noopener" class="evento-btn-primary">📝 Inscribirme</a>
+          <a href="https://youtube.com/live/AnkYqxmsRi4?feature=share" target="_blank" rel="noopener" class="evento-btn-secondary">▶ Día 1</a>
+          <a href="https://youtube.com/live/KBMIN0n04Ug?feature=share" target="_blank" rel="noopener" class="evento-btn-secondary">▶ Día 2</a>
+        </div>
+      </div>
+
+    </div><!-- /eventos-grid -->
+  </div>
+</section>
+
 <!-- ===== AGENDA 2026 ===== -->
 <section class="section agenda2026-section" id="agenda2026">
   <div class="container">
     <div class="section-label">Agenda 2026</div>
     <div class="agenda-header-row">
-      <h2 class="section-title reveal" style="margin-bottom:0;">Próximas sesiones</h2>
+      <h2 class="section-title reveal" style="margin-bottom:0;">Sesiones MATHINNOVA 2026</h2>
       <div class="agenda-count-badge reveal">
         <span class="agenda-count-dot"></span>
         6 sesiones · Abr–May 2026 · 10:00 AM
@@ -335,8 +511,7 @@
           <div class="agenda-divider"></div>
           <div class="agenda-speaker">
             <img src="Foto%20Daniel%20Steven%20Moran%20Pizarro.jpg"
-                 alt="Daniel Steven Moran Pizarro"
-                 class="agenda-speaker-avatar"
+                 alt="Daniel Steven Moran Pizarro" class="agenda-speaker-avatar"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="agenda-speaker-initial" style="display:none;">DM</div>
             <div class="agenda-speaker-info">
@@ -364,8 +539,7 @@
           <div class="agenda-divider"></div>
           <div class="agenda-speaker">
             <img src="Foto%20Daniel%20Steven%20Moran%20Pizarro.jpg"
-                 alt="Daniel Steven Moran Pizarro"
-                 class="agenda-speaker-avatar"
+                 alt="Daniel Steven Moran Pizarro" class="agenda-speaker-avatar"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="agenda-speaker-initial" style="display:none;">DM</div>
             <div class="agenda-speaker-info">
@@ -393,8 +567,7 @@
           <div class="agenda-divider"></div>
           <div class="agenda-speaker">
             <img src="Foto%20Alexis%20Trujillo%20Garc%C3%ADa.png"
-                 alt="Alexis Trujillo García"
-                 class="agenda-speaker-avatar"
+                 alt="Alexis Trujillo García" class="agenda-speaker-avatar"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="agenda-speaker-initial" style="display:none;">AT</div>
             <div class="agenda-speaker-info">
@@ -422,8 +595,7 @@
           <div class="agenda-divider"></div>
           <div class="agenda-speaker">
             <img src="Foto%20Andr%C3%A9s%20Felipe%20Sol%C3%ADs%20Pino.jpeg"
-                 alt="Andrés Felipe Solis Pino"
-                 class="agenda-speaker-avatar"
+                 alt="Andrés Felipe Solis Pino" class="agenda-speaker-avatar"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="agenda-speaker-initial" style="display:none;">AS</div>
             <div class="agenda-speaker-info">
@@ -451,8 +623,7 @@
           <div class="agenda-divider"></div>
           <div class="agenda-speaker">
             <img src="Foto%20Claudia%20Patricia%20Hernandez%20Arbelaez.jpeg"
-                 alt="Claudia Patricia Hernández Arbelaez"
-                 class="agenda-speaker-avatar"
+                 alt="Claudia Patricia Hernández Arbelaez" class="agenda-speaker-avatar"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="agenda-speaker-initial" style="display:none;">CH</div>
             <div class="agenda-speaker-info">
@@ -480,8 +651,7 @@
           <div class="agenda-divider"></div>
           <div class="agenda-speaker">
             <img src="Foto%20Lizley%20Reyes.jpg"
-                 alt="Lizley Reyes Álvarez"
-                 class="agenda-speaker-avatar"
+                 alt="Lizley Reyes Álvarez" class="agenda-speaker-avatar"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="agenda-speaker-initial" style="display:none;">LR</div>
             <div class="agenda-speaker-info">
@@ -564,22 +734,10 @@
     <div class="section-label">Impacto 2025</div>
     <h2 class="section-title reveal">Lo que logramos juntos</h2>
     <div class="stats-row reveal">
-      <div class="stat-card">
-        <div class="stat-number">12+</div>
-        <div class="stat-label">Ponencias y eventos</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">8+</div>
-        <div class="stat-label">Certificaciones</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2°</div>
-        <div class="stat-label">Rally Lat. Innovación</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">16</div>
-        <div class="stat-label">Miembros activos</div>
-      </div>
+      <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">Ponencias y eventos</div></div>
+      <div class="stat-card"><div class="stat-number">8+</div><div class="stat-label">Certificaciones</div></div>
+      <div class="stat-card"><div class="stat-number">2°</div><div class="stat-label">Rally Lat. Innovación</div></div>
+      <div class="stat-card"><div class="stat-number">16</div><div class="stat-label">Miembros activos</div></div>
     </div>
     <div class="highlights-grid">
       <div class="highlight-card reveal">
@@ -629,54 +787,42 @@
         <div class="member-name">Daniel Steven Moran Pizarro</div>
         <div class="member-role">Líder Semillero</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links">
-          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001560327" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
-        </div>
+        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001560327" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
       </div>
       <div class="member-card reveal">
         <img src="Foto%20Alexis%20Trujillo%20Garc%C3%ADa.png" alt="Alexis Trujillo García" class="member-photo">
         <div class="member-name">Alexis Trujillo García</div>
         <div class="member-role">Líder Articulador</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links">
-          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000034587" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
-        </div>
+        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000034587" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
       </div>
       <div class="member-card reveal">
         <img src="Foto%20Andr%C3%A9s%20Felipe%20Sol%C3%ADs%20Pino.jpeg" alt="Andrés Felipe Solis Pino" class="member-photo">
         <div class="member-name">Andrés Felipe Solis Pino</div>
         <div class="member-role">Líder Articulador</div>
         <div class="member-dept">Esp. en Analítica y Ciencia de Datos</div>
-        <div class="member-links">
-          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001666607" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
-        </div>
+        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001666607" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
       </div>
       <div class="member-card reveal">
         <img src="Foto%20Claudia%20Patricia%20Hernandez%20Arbelaez.jpeg" alt="Claudia Patricia Hernández Arbelaez" class="member-photo">
         <div class="member-name">Claudia Patricia Hernández A.</div>
         <div class="member-role">Líder Articuladora</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links">
-          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001737294" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
-        </div>
+        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001737294" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
       </div>
       <div class="member-card reveal">
         <img src="Foto%20Lizley%20Reyes.jpg" alt="Lizley Reyes Álvarez" class="member-photo">
         <div class="member-name">Lizley Reyes Álvarez</div>
         <div class="member-role">Líder Articulador</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links">
-          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001724133" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
-        </div>
+        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001724133" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
       </div>
       <div class="member-card reveal">
         <img src="Foto%20Brigni%20Rend%C3%B3n.jpg" alt="Brigni Dahiana Rendón Toro" class="member-photo">
         <div class="member-name">Brigni Dahiana Rendón Toro</div>
         <div class="member-role">Estudiante Líder Dinamizadora</div>
         <div class="member-dept">Ingeniería Electrónica</div>
-        <div class="member-links">
-          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0002452654" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
-        </div>
+        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0002452654" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
       </div>
     </div>
   </div>
@@ -686,10 +832,7 @@
 <section class="section cta-section" id="cta">
   <div class="cta-content reveal">
     <h2>¿Listo para hacer parte de <span style="color: var(--gold);">MATHINNOVA</span>?</h2>
-    <p>
-      No necesitas experiencia previa en investigación. Solo ganas de aprender, curiosidad y compromiso.
-      Únete a un equipo que está transformando la educación matemática virtual en Colombia.
-    </p>
+    <p>No necesitas experiencia previa en investigación. Solo ganas de aprender, curiosidad y compromiso. Únete a un equipo que está transformando la educación matemática virtual en Colombia.</p>
     <div class="cta-buttons">
       <a href="https://teams.microsoft.com/l/chat/0/0?users=daniel.moran@unad.edu.co" class="btn-primary" target="_blank" rel="noopener">💬 Escríbenos por Teams</a>
       <a href="https://www.youtube.com/watch?v=31eW6NFo1w4" class="btn-secondary" target="_blank" rel="noopener">▶ Ver sesiones</a>
