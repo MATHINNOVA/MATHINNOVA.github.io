@@ -102,6 +102,12 @@
       border-color: var(--gold, #e8a838); transform: translateY(-1px);
       box-shadow: 0 4px 14px rgba(232,168,56,0.2);
     }
+    /* Row wrapper for multiple links in a session card */
+    .agenda-links-row {
+      display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.5rem;
+    }
+    .agenda-links-row .agenda-join-btn { margin-top: 0; }
+
     .agenda-header-row {
       display: flex; align-items: flex-end; justify-content: space-between;
       flex-wrap: wrap; gap: 1rem; margin-bottom: 0;
@@ -212,6 +218,27 @@
       text-decoration: none; transition: all 0.2s ease;
     }
     .evento-btn-secondary:hover { background: #FECACA; }
+
+    /* ===== ACADEMIC NETWORK LINKS (Team section) ===== */
+    .member-links {
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+      justify-content: center; margin-top: 0.5rem;
+    }
+    .cvlac-link, .orcid-link, .scholar-link, .rgate-link {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      padding: 0.25rem 0.65rem; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.04em; text-decoration: none;
+      transition: all 0.2s ease; white-space: nowrap;
+    }
+    .cvlac-link   { background: rgba(13,32,69,0.08);   color: var(--navy);  border: 1px solid rgba(13,32,69,0.18); }
+    .cvlac-link:hover   { background: rgba(13,32,69,0.15); }
+    .orcid-link   { background: rgba(166,206,57,0.12); color: #4c7a0e;      border: 1px solid rgba(166,206,57,0.35); }
+    .orcid-link:hover   { background: rgba(166,206,57,0.22); }
+    .scholar-link { background: rgba(66,133,244,0.1);  color: #1a56c4;      border: 1px solid rgba(66,133,244,0.3); }
+    .scholar-link:hover { background: rgba(66,133,244,0.2); }
+    .rgate-link   { background: rgba(0,132,137,0.1);   color: #006467;      border: 1px solid rgba(0,132,137,0.3); }
+    .rgate-link:hover   { background: rgba(0,132,137,0.2); }
 
     @media (max-width: 900px) {
       .eventos-grid { grid-template-columns: 1fr; }
@@ -499,7 +526,7 @@
 
     <div class="agenda-grid">
 
-      <!-- Sesión 1 -->
+      <!-- ══ Sesión 1 — REALIZADA ══ -->
       <div class="agenda-card reveal">
         <div class="agenda-card-accent"></div>
         <div class="agenda-card-body">
@@ -523,7 +550,14 @@
             <span class="agenda-time-icon">🕙</span>
             <span class="agenda-time-text">10:00 AM · Sesión virtual</span>
           </div>
-          <a href="https://url.unad.edu.co/ZjG5U" class="agenda-join-btn" target="_blank" rel="noopener">🔗 Unirse a la sesión</a>
+          <!-- PATCH: recording + presentation added 2026-04-09 -->
+          <div class="agenda-links-row">
+            <a href="https://url.unad.edu.co/ZjG5U" class="agenda-join-btn" target="_blank" rel="noopener">🔗 Enlace de sesión</a>
+            <a href="https://youtu.be/W2vCVtuXMFQ" class="agenda-join-btn" target="_blank" rel="noopener"
+               style="background:linear-gradient(135deg,#b91c1c,#7f1d1d);border-color:rgba(220,38,38,0.45);">▶ Grabación</a>
+            <a href="https://canva.link/lxvd77ku25kjs1p" class="agenda-join-btn" target="_blank" rel="noopener"
+               style="background:linear-gradient(135deg,#6d28d9,#4c1d95);border-color:rgba(124,58,237,0.45);">📊 Presentación</a>
+          </div>
         </div>
       </div>
 
@@ -782,48 +816,88 @@
     <div class="section-label">Nuestro equipo</div>
     <h2 class="section-title reveal">Los rostros detrás de MATHINNOVA</h2>
     <div class="members-grid">
+
+      <!-- Daniel Steven Moran Pizarro -->
       <div class="member-card reveal">
         <img src="Foto%20Daniel%20Steven%20Moran%20Pizarro.jpg" alt="Daniel Steven Moran Pizarro" class="member-photo">
         <div class="member-name">Daniel Steven Moran Pizarro</div>
         <div class="member-role">Líder Semillero</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001560327" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
+        <div class="member-links">
+          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001560327" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
+          <a href="https://orcid.org/0000-0003-1791-2818" class="orcid-link" target="_blank" rel="noopener">🆔 ORCID</a>
+          <a href="https://scholar.google.com/citations?user=CLZKj3YAAAAJ&hl=es" class="scholar-link" target="_blank" rel="noopener">🎓 Scholar</a>
+          <a href="https://www.researchgate.net/profile/Daniel-Moran-Pizarro" class="rgate-link" target="_blank" rel="noopener">🔬 RGate</a>
+        </div>
       </div>
+
+      <!-- Alexis Trujillo García -->
       <div class="member-card reveal">
         <img src="Foto%20Alexis%20Trujillo%20Garc%C3%ADa.png" alt="Alexis Trujillo García" class="member-photo">
         <div class="member-name">Alexis Trujillo García</div>
         <div class="member-role">Líder Articulador</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000034587" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
+        <div class="member-links">
+          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000034587" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
+          <a href="https://orcid.org/0000-0002-9129-5371" class="orcid-link" target="_blank" rel="noopener">🆔 ORCID</a>
+          <a href="https://scholar.google.com/citations?user=gZkQSMsAAAAJ&hl=es" class="scholar-link" target="_blank" rel="noopener">🎓 Scholar</a>
+          <a href="https://www.researchgate.net/profile/Alexis-Trujillo-8?ev=hdr_xprf" class="rgate-link" target="_blank" rel="noopener">🔬 RGate</a>
+        </div>
       </div>
+
+      <!-- Andrés Felipe Solis Pino -->
       <div class="member-card reveal">
         <img src="Foto%20Andr%C3%A9s%20Felipe%20Sol%C3%ADs%20Pino.jpeg" alt="Andrés Felipe Solis Pino" class="member-photo">
         <div class="member-name">Andrés Felipe Solis Pino</div>
         <div class="member-role">Líder Articulador</div>
         <div class="member-dept">Esp. en Analítica y Ciencia de Datos</div>
-        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001666607" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
+        <div class="member-links">
+          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001666607" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
+          <a href="https://orcid.org/0000-0003-3342-0776" class="orcid-link" target="_blank" rel="noopener">🆔 ORCID</a>
+          <a href="https://scholar.google.es/citations?user=vJWvKcMAAAAJ&hl=es" class="scholar-link" target="_blank" rel="noopener">🎓 Scholar</a>
+          <a href="https://www.researchgate.net/profile/Andres-Solis-Pino" class="rgate-link" target="_blank" rel="noopener">🔬 RGate</a>
+        </div>
       </div>
+
+      <!-- Claudia Patricia Hernández Arbelaez -->
       <div class="member-card reveal">
         <img src="Foto%20Claudia%20Patricia%20Hernandez%20Arbelaez.jpeg" alt="Claudia Patricia Hernández Arbelaez" class="member-photo">
         <div class="member-name">Claudia Patricia Hernández A.</div>
         <div class="member-role">Líder Articuladora</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001737294" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
+        <div class="member-links">
+          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001737294" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
+          <a href="https://orcid.org/0000-0002-1811-5792" class="orcid-link" target="_blank" rel="noopener">🆔 ORCID</a>
+          <a href="https://scholar.google.com/citations?user=XQcbPPwAAAAJ&hl=es&authuser=1" class="scholar-link" target="_blank" rel="noopener">🎓 Scholar</a>
+          <a href="https://www.researchgate.net/profile/Claudia-Hernandez-48" class="rgate-link" target="_blank" rel="noopener">🔬 RGate</a>
+        </div>
       </div>
+
+      <!-- Lizley Reyes Álvarez — solo CvLAC (no reporta redes) -->
       <div class="member-card reveal">
         <img src="Foto%20Lizley%20Reyes.jpg" alt="Lizley Reyes Álvarez" class="member-photo">
         <div class="member-name">Lizley Reyes Álvarez</div>
         <div class="member-role">Líder Articulador</div>
         <div class="member-dept">Cadena de Formación en Ciencias Básicas</div>
-        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001724133" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
+        <div class="member-links">
+          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0001724133" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
+        </div>
       </div>
+
+      <!-- Brigni Dahiana Rendón Toro -->
       <div class="member-card reveal">
         <img src="Foto%20Brigni%20Rend%C3%B3n.jpg" alt="Brigni Dahiana Rendón Toro" class="member-photo">
         <div class="member-name">Brigni Dahiana Rendón Toro</div>
         <div class="member-role">Estudiante Líder Dinamizadora</div>
         <div class="member-dept">Ingeniería Electrónica</div>
-        <div class="member-links"><a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0002452654" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a></div>
+        <div class="member-links">
+          <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0002452654" class="cvlac-link" target="_blank" rel="noopener">📄 CvLAC</a>
+          <a href="https://orcid.org/0009-0001-5264-820X" class="orcid-link" target="_blank" rel="noopener">🆔 ORCID</a>
+          <a href="https://scholar.google.com/citations?user=P5xtOjUAAAAJ&hl=es" class="scholar-link" target="_blank" rel="noopener">🎓 Scholar</a>
+          <a href="https://www.researchgate.net/profile/Brigni-Dahiana-Rendon-Toro" class="rgate-link" target="_blank" rel="noopener">🔬 RGate</a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
